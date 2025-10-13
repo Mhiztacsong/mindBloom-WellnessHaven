@@ -1,15 +1,213 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+/* =========================
+   GLOBAL STYLES
+========================= */
+html, body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    overflow-x: hidden;
 }
-header, footer {
-  background: #cce3dc;
-  text-align: center;
-  padding: 1em;
+
+*, *::before, *::after {
+    box-sizing: inherit;
 }
-nav a {
-  margin: 0 1em;
-  text-decoration: none;
-  color: #333;
+
+h1, h2, h3 {
+    font-family: Helvetica, sans-serif;
+}
+
+p {
+    font-family: Cambria, serif;
+}
+
+h1 {
+    padding: 1.5rem;
+}
+
+/* =========================
+   HEADER
+========================= */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2c3e50;
+    color: #fff;
+    width: 100%;
+    padding: 0.5rem 1rem;
+}
+
+header img {
+    max-width: 100%;
+    height: auto;
+}
+
+#menu {
+    display: none;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+.navigation {
+    background: #ebdbdb;
+    width: 100%;
+}
+
+.navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 100%;
+}
+
+.navigation li {
+    flex: 1;
+}
+
+.navigation a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    font-size: 15px;
+    padding: 1rem 0;
+    transition: background 0.3s ease;
+}
+
+.navigation li:last-child a {
+    border-right: none;
+}
+
+.navigation a:hover {
+    background: #999;
+}
+
+.active {
+    background-color: #76accf;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: left;
+    font-size: 15px;
+    gap: 1rem;
+}
+
+footer section h2 {
+    margin: 0;
+}
+
+footer a {
+    text-decoration: none;
+    color: yellow;
+}
+
+.sociallinks {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.sociallinks img {
+    width: 30px;
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+
+/* =========================
+   RESPONSE PAGE
+========================= */
+.response {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.8rem;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media screen and (max-width: 540px) {
+    #menu {
+        display: flex;
+        font-size: 2rem;
+        border: none;
+        background: none;
+        color: #fff;
+        margin-left: auto;
+        cursor: pointer;
+    }
+
+    #menu::before {
+        content: "≡";
+    }
+
+    #menu.open::before {
+        content: "✖";
+    }
+
+    .navigation {
+        display: flex;
+        flex-direction: column;
+        background: #ebdbdb;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+    }
+
+    .navigation.open {
+        max-height: 400px;
+    }
+
+    .navigation ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navigation li {
+        width: 100%;
+    }
+
+    .navigation a {
+        width: 100%;
+        border-bottom: 0.5px solid rgba(0, 0, 0, 0.4);
+    }
+
+    .navigation a:hover {
+        background-color: #bbb;
+        color: #333;
+        font-weight: 600;
+    }
+
+    header img {
+        max-width: 60%;
+    }
+
+    h1 {
+        font-size: 20px;
+        margin: 0 1.5rem;
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    footer {
+        display: grid;
+        text-align: left;
+        gap: 1rem;
+    }
 }

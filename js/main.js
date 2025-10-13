@@ -1,5 +1,4 @@
-// js/main.js
-import { loadPartial } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 
-loadPartial("header", "./public/partials/header.html");
-loadPartial("footer", "./public/partials/footer.html");
+// Load header and footer on page load
+loadHeaderFooter();

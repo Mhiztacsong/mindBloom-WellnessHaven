@@ -3,19 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mindbloom Wellness Haven</title>
-  <link rel="stylesheet" href="./public/css/style.css" />
+  <meta name="description" content="MindBloom & Wellness Haven - Mental Health & Wellness Hub" />
+  <meta name="author" content="Johnson Nsisong Gabriel" />
+  <title>MindBloom & Wellness Haven</title>
+
+  <!-- Open Graph Meta -->
+  <meta property="og:title" content="MindBloom & Wellness Haven" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="src/public/images/mental-health-banner.webp" />
+  <meta property="og:url" content="https://mhiztacsong.github.io/Mindbloom-Wellness-Haven/" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="public/images/haven-logo.ico" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="public/css/style.css" />
+  <link rel="stylesheet" href="public/css/homePage.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto&display=swap" rel="stylesheet" />
 </head>
+
 <body>
-  <div id="header"></div>
+  <header id="main-header"></header>
 
   <main>
-    <h1>Welcome to Mindbloom Wellness Haven</h1>
-    <p>Your mental health matters.</p>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <aside class="sidebar">
+          <p id="visit-message">Welcome!</p>
+        </aside>
+
+        <h2>Your Mental Health Matters</h2>
+        <p>Discover uplifting tools and resources for your emotional well-being.</p>
+        <a href="resources.html" class="cta-button">Explore Resources</a>
+      </div>
+      <img src="public/images/mental-health-banner.webp" alt="Mental Wellness" loading="lazy" />
+    </section>
+
+    <!-- Daily Quote Section (API) -->
+    <section class="quote-section">
+      <blockquote id="mental-health-quote">Loading inspirational quote...</blockquote>
+      <p class="quote-author" id="quote-author"></p>
+    </section>
+
+    <!-- Resource Cards -->
+    <section class="resources-grid">
+      <div class="resource-card">
+        <h3><a href="therapist.html">Find a Therapist</a></h3>
+        <p>Connect with licensed professionals to guide your mental health journey.</p>
+        <button 
+          class="read-more" 
+          data-info="Finding the right therapist can help you navigate challenges, build coping strategies, and improve your mental well-being. Learn how to identify qualified professionals, explore therapy types (CBT, talk therapy, etc.), and set goals for your sessions." 
+          data-image="public/images/therapist.jpg">Read More
+        </button>
+      </div>
+
+      <div class="resource-card">
+        <h3><a href="self-care.html">Self-Care Tips</a></h3>
+        <p>Daily practices that boost your mental and emotional balance.</p>
+        <button 
+          class="read-more" 
+          data-info="Self-care is more than rest — it's a habit of nourishing your mind and body. Explore mindfulness, journaling, gratitude routines, and stress management activities that make a real difference in your mood and energy." 
+          data-image="public/images/self-care.jpg">Read More
+        </button>
+      </div>
+
+      <div class="resource-card">
+        <h3><a href="crisis.html">Crisis Support</a></h3>
+        <p>Get immediate help when you need it most.</p>
+        <button 
+          class="read-more" 
+          data-info="If you ever feel overwhelmed or unsafe, support is just a call away. Learn how to access hotlines, online chat support, and emergency mental health centers — for yourself or someone you care about." 
+          data-image="public/images/crisis.jpg">Read More
+        </button>
+      </div>
+    </section>
+
+    <!-- Embedded Meditation Video -->
+    <section class="video-section">
+      <h2>Guided Meditation</h2>
+      <div class="video-wrapper">
+        <iframe id="mindfulness-video" src="" title="Guided Meditation" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </section>
   </main>
 
-  <div id="footer"></div>
+  <footer id="main-footer"></footer>
 
-  <script type="module" src="./js/main.js"></script>
+  <!-- Modal Dialog -->
+  <dialog id="dialog-box">
+    <div class="dialog-content">
+      <span class="close">&times;</span>
+      <img id="dialog-image" alt="Resource image" />
+      <p id="dialog-text"></p>
+    </div>
+  </dialog>
+
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
