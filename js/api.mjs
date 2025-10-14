@@ -1,46 +1,26 @@
-import { YOUTUBE_API_KEY } from "./config.mjs";
-const proxy = "https://api.allorigins.win/get?url=";
+// js/api.mjs
 const zenQuotesURL = "https://zenquotes.io/api/random";
 
+// Fetch random inspirational quote
 export async function getQuote() {
   try {
-    const response = await fetch(`${proxy}${encodeURIComponent(zenQuotesURL)}`);
-    const data = await response.json();
+    const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(zenQuotesURL)}`);
+    const data = await res.json();
     const quoteData = JSON.parse(data.contents)[0];
-
-    // Return quote text and author
-    return {
-      text: quoteData.q,
-      author: quoteData.a
-    };
-
-  } catch (error) {
-    console.error("ZenQuotes API Error:", error);
-    return {
-      text: "Stay strong, keep going. Better days are ahead.",
-      author: "Unknown"
-    };
+    return { text: quoteData.q, author: quoteData.a };
+  } catch (err) {
+    console.error("Quote API error:", err);
+    return { text: "Stay strong, keep going. Better days are ahead.", author: "Unknown" };
   }
 }
 
-
-// =====================
-// YouTube Data API
-// =====================
-const YOUTUBE_SEARCH_URL = "https://www.googleapis.com/youtube/v3/search";
-
+// Fetch YouTube video from your Vercel serverless function
 export async function getMindfulnessVideo() {
-  const query = "guided meditation mindfulness";
-  const url = `${YOUTUBE_SEARCH_URL}?part=snippet&type=video&maxResults=5&q=${encodeURIComponent(
-    query
-  )}&key=${YOUTUBE_API_KEY}`;
-
   try {
-    const response = await fetch(url);
-    const data = await response.json();
-
+    const res = await fetch("/api/youtube"); // call Vercel function
+    if (!res.ok) throw new Error(`Server error: ${res.status}`);
+    const data = await res.json();
     if (data.items && data.items.length > 0) {
-      // Pick a random video
       const randomVideo = data.items[Math.floor(Math.random() * data.items.length)];
       const videoId = randomVideo.id.videoId;
       return `https://www.youtube.com/embed/${videoId}`;
@@ -48,8 +28,8 @@ export async function getMindfulnessVideo() {
       console.warn("No videos found.");
       return null;
     }
-  } catch (error) {
-    console.error("YouTube API error:", error);
+  } catch (err) {
+    console.error("Error fetching video:", err);
     return null;
   }
 }

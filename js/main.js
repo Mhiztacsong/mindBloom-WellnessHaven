@@ -1,35 +1,43 @@
+// js/main.js
 import { getQuote, getMindfulnessVideo } from "./api.mjs";
 import { loadPartial } from "./utils.mjs";
 
-// Load Header & Footer
-async function init() {
-  await loadPartial("header", "./public/partials/header.html");
-  await loadPartial("footer", "./public/partials/footer.html");
+// Load header & footer
+loadPartial("header", "./public/partials/header.html").then(() => setupHamburger());
+loadPartial("footer", "./public/partials/footer.html");
 
-  const hamButton = document.querySelector("#menu");
-  const navigation = document.querySelector(".navigation");
+// Display Quote
+async function displayQuote() {
+  const { text, author } = await getQuote();
+  const quoteEl = document.getElementById("mental-health-quote");
+  const authorEl = document.getElementById("quote-author");
+  if (quoteEl) quoteEl.textContent = `"${text}"`;
+  if (authorEl) authorEl.textContent = `— ${author}`;
+}
 
-  if (hamButton && navigation) {
+// Display Video
+async function displayVideo() {
+  const videoURL = await getMindfulnessVideo();
+  const iframe = document.getElementById("mindfulness-video");
+  if (videoURL && iframe) iframe.src = videoURL;
+}
+
+// Hamburger menu toggle
+function setupHamburger() {
+  const hamButton = document.getElementById("menu");
+  const nav = document.querySelector(".navigation");
+  if (hamButton && nav) {
     hamButton.addEventListener("click", () => {
-      navigation.classList.toggle("open");
+      nav.classList.toggle("open");
       hamButton.classList.toggle("open");
     });
   } else {
-    console.error("Hamburger menu elements not found.");
-  }
-
-  // Display Quote
-  const { text, author } = await getQuote();
-  document.getElementById("mental-health-quote").textContent = `"${text}"`;
-  document.getElementById("quote-author").textContent = `— ${author}`;
-
-  // Display Video
-  const videoURL = await getMindfulnessVideo();
-  const iframe = document.getElementById("mindfulness-video");
-  if (videoURL && iframe) {
-    iframe.src = videoURL;
+    console.warn("Hamburger menu elements not found.");
   }
 }
 
-// Run everything after DOM is ready
-document.addEventListener("DOMContentLoaded", init);
+// Run quote & video after DOM loaded
+document.addEventListener("DOMContentLoaded", () => {
+  displayQuote();
+  displayVideo();
+});
