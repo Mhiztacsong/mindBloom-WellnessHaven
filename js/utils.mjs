@@ -1,34 +1,20 @@
-// Load a partial HTML file
-export async function loadTemplate(path) {
+// Utility to load and inject a partial (header, footer, etc.)
+export async function loadPartial(elementId, filePath) {
   try {
-    const res = await fetch(path);
-    if (!res.ok) throw new Error(`Failed to load ${path}: ${res.status}`);
-    return await res.text();
-  } catch (err) {
-    console.error("Template load error:", err);
-    return "";
-  }
-}
+    const response = await fetch(filePath);
+    if (!response.ok) {
+      throw new Error(`Failed to load ${filePath}: ${response.status}`);
+    }
 
-// Render a loaded template into a parent element
-export function renderWithTemplate(template, parentElement) {
-  parentElement.innerHTML = template;
-}
+    const html = await response.text();
+    const container = document.getElementById(`main-${elementId}`);
 
-// Dynamically load header and footer
-export async function loadHeaderFooter() {
-  try {
-    const [headerHTML, footerHTML] = await Promise.all([
-      loadTemplate("public/partials/header.html"),
-      loadTemplate("public/partials/footer.html")
-    ]);
-
-    const headerElement = document.querySelector("#main-header");
-    const footerElement = document.querySelector("#main-footer");
-
-    if (headerElement) renderWithTemplate(headerHTML, headerElement);
-    if (footerElement) renderWithTemplate(footerHTML, footerElement);
-  } catch (err) {
-    console.error("Error loading header/footer:", err);
+    if (container) {
+      container.innerHTML = html;
+    } else {
+      console.warn(`Element with id "main-${elementId}" not found.`);
+    }
+  } catch (error) {
+    console.error(`Error loading ${elementId} partial:`, error);
   }
 }
