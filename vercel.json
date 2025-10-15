@@ -6,6 +6,7 @@
     { "src": "resources.html", "use": "@vercel/static" },
     { "src": "contact.html", "use": "@vercel/static" },
     { "src": "response.html", "use": "@vercel/static" },
+    { "src": "about.html", "use": "@vercel/static" },
     { "src": "public/**/*", "use": "@vercel/static" },
     { "src": "js/**/*", "use": "@vercel/static" },
     { "src": "tips.json", "use": "@vercel/static" }
@@ -17,6 +18,7 @@
     { "src": "/resources.html", "dest": "/resources.html" },
     { "src": "/contact.html", "dest": "/contact.html" },
     { "src": "/response.html", "dest": "/response.html" },
+    { "src": "/about.html", "dest": "/about.html" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }

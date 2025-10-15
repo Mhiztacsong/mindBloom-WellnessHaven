@@ -1,0 +1,75 @@
+/* About Us main container */
+.aboutUs#aboutMain {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 1rem 2rem;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* Headings */
+.aboutUs#aboutMain h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.aboutUs#aboutMain h3 {
+    font-size: 1.5rem;
+    color: #34495e;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+/* Paragraphs */
+.aboutUs#aboutMain p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+/* Sections */
+.aboutUs#aboutMain section {
+    margin-bottom: 2rem;
+}
+
+/* Images */
+.aboutUs#aboutMain img {
+    display: block;
+    margin: 0.5rem auto 1rem;
+    border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Lists */
+.aboutUs#aboutMain ul {
+    list-style: disc inside;
+    margin-left: 0;
+    padding-left: 1rem;
+}
+
+.aboutUs#aboutMain li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #444;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .aboutUs#aboutMain {
+        padding: 1rem 1rem;
+    }
+    
+    .aboutUs#aboutMain h2 {
+        font-size: 1.75rem;
+    }
+
+    .aboutUs#aboutMain h3 {
+        font-size: 1.3rem;
+    }
+}

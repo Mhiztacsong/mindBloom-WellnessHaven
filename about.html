@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Response - Mental Health & Wellness</title>
-
+    <meta name="description" content="MindBloom & Wellness Haven About Us Page">
+    <meta name="author" content="Johnson Nsisong Gabriel">
+    <title>MindBloom & Wellness Haven About Us Page</title>
+        
     <link rel="icon" href="haven-logo.ico">
     <link rel="stylesheet" href="/public/css/style.css"/>
+    <link rel="stylesheet" href="/public/css/aboutUs.css"/>
 </head>
-<body>
+<body class="aboutUs">
     <header>
         <img src="/public/images/haven-logo.webp" alt="Network Haven">
         <h1>MindBloom & Wellness Haven</h1>
@@ -18,15 +21,17 @@
         <ul>
             <li><a href="/index.html">Home</a></li>
             <li><a href="/resources.html">Resources</a></li>
-            <li><a href="/about.html">About Us</a></li>
+            <li><a href="/about.html" class="active">About Us</a></li>
             <li><a href="/contact.html">Contact</a></li>
         </ul>
     </nav>
-
-    <main class="response">
-        <p id="responseMessage">Thank you! Your message has been sent.</p>
-    </main>
     
+    <main class="aboutUs" id="aboutMain">
+
+    <!-- Content will be injected here -->
+
+    </main>
+
     <footer>
         <section>
             <h2>MindBloom & Wellness Haven</h2>
@@ -46,11 +51,11 @@
         <section>
             <p>WDD330 Class Project</p>
             <p>Johnson Nsisong Gabriel</p>
-            <p>&copy; <span id="currentyear"></span> MindBloom & Wellness Haven</p>   
+            <p>&copy; <span id="currentyear"></span> MindBloom & Wellness Haven</p>  
         </section>        
     </footer>
 
     <script src="/js/script.js"></script>
-    <script src="/js/response.js"></script>
+    <script src="/js/about.js"></script>
 </body>
 </html>
