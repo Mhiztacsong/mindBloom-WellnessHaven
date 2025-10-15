@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const tipsContainer = document.querySelector(".tips");
 
-    fetch("tips.json")
+    fetch("/tips.json")
         .then(response => response.json())
         .then(tips => {
             tips.forEach(tip => {
