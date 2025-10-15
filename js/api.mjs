@@ -1,35 +1,53 @@
-// js/api.mjs
-const zenQuotesURL = "https://zenquotes.io/api/random";
-
-// Fetch random inspirational quote
+// Fetch a random inspirational quote
 export async function getQuote() {
+  const url = "https://api.quotable.io/random";
+
   try {
-    const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(zenQuotesURL)}`);
-    const data = await res.json();
-    const quoteData = JSON.parse(data.contents)[0];
-    return { text: quoteData.q, author: quoteData.a };
-  } catch (err) {
-    console.error("Quote API error:", err);
-    return { text: "Stay strong, keep going. Better days are ahead.", author: "Unknown" };
+    const response = await fetch(url);
+    const data = await response.json();
+    return { text: data.content, author: data.author };
+  } catch (error) {
+    console.error("Quote API error:", error);
+    return { text: "Stay positive and keep going.", author: "MindBloom" };
   }
 }
 
-// Fetch YouTube video from your Vercel serverless function
+// Fetch YouTube meditation video via your Vercel function
 export async function getMindfulnessVideo() {
   try {
-    const res = await fetch("/api/youtube"); // call Vercel function
+    const res = await fetch("/api/youtube");
     if (!res.ok) throw new Error(`Server error: ${res.status}`);
+
     const data = await res.json();
-    if (data.items && data.items.length > 0) {
-      const randomVideo = data.items[Math.floor(Math.random() * data.items.length)];
-      const videoId = randomVideo.id.videoId;
-      return `https://www.youtube.com/embed/${videoId}`;
+
+    if (data && data.videoId) {
+      return { videoId: data.videoId, title: data.title };
     } else {
-      console.warn("No videos found.");
-      return null;
+      console.warn("No videos returned from API, using fallback video.");
+      return getFallbackVideo();
     }
   } catch (err) {
     console.error("Error fetching video:", err);
-    return null;
+    return getFallbackVideo();
   }
+}
+
+// ✅ Fallback videos — if API fails
+function getFallbackVideo() {
+  const fallbackVideos = [
+    {
+      videoId: "ZToicYcHIOU",
+      title: "Daily Calm | 10 Minute Mindfulness Meditation | Be Present"
+    },
+    {
+      videoId: "uTN29kj7e-w",
+      title: "10 MIN Guided Meditation To Clear Your Mind & Start New Positive Habits"
+    },
+    {
+      videoId: "vj0JDwQLof4",
+      title: "10-Minute Guided Meditation: Self-Love | SELF"
+    }
+  ];
+
+  return fallbackVideos[Math.floor(Math.random() * fallbackVideos.length)];
 }
