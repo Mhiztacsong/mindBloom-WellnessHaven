@@ -2,11 +2,15 @@
   "version": 2,
   "builds": [
     { "src": "index.html", "use": "@vercel/static" },
+    { "src": "selfcare.html", "use": "@vercel/static" },
     { "src": "public/**/*", "use": "@vercel/static" },
     { "src": "js/**/*", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/(js|public)/(.*)", "dest": "/$1/$2" },
+    { "src": "/selfcare", "dest": "/selfcare.html" },
+    { "src": "/selfcare.html", "dest": "/selfcare.html" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
+
