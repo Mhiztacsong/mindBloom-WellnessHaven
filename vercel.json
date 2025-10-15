@@ -8,6 +8,7 @@
     { "src": "response.html", "use": "@vercel/static" },
     { "src": "about.html", "use": "@vercel/static" },
     { "src": "therapist.html", "use": "@vercel/static" },
+    { "src": "crisis.html", "use": "@vercel/static" },
     { "src": "public/**/*", "use": "@vercel/static" },
     { "src": "js/**/*", "use": "@vercel/static" },
     { "src": "tips.json", "use": "@vercel/static" }
@@ -21,6 +22,7 @@
     { "src": "/response.html", "dest": "/response.html" },
     { "src": "/about.html", "dest": "/about.html" },
     { "src": "/therapist.html", "dest": "/therapist.html" },
+    { "src": "/crisis.html", "dest": "/crisis.html" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
