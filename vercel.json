@@ -4,6 +4,8 @@
     { "src": "index.html", "use": "@vercel/static" },
     { "src": "selfcare.html", "use": "@vercel/static" },
     { "src": "resources.html", "use": "@vercel/static" },
+    { "src": "contact.html", "use": "@vercel/static" },
+    { "src": "response.html", "use": "@vercel/static" },
     { "src": "public/**/*", "use": "@vercel/static" },
     { "src": "js/**/*", "use": "@vercel/static" },
     { "src": "tips.json", "use": "@vercel/static" }
@@ -13,6 +15,8 @@
     { "src": "/(tips\\.json)", "dest": "/tips.json" },
     { "src": "/selfcare.html", "dest": "/selfcare.html" },
     { "src": "/resources.html", "dest": "/resources.html" },
+    { "src": "/contact.html", "dest": "/contact.html" },
+    { "src": "/response.html", "dest": "/response.html" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
